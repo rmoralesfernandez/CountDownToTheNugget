@@ -21,6 +21,6 @@ public:
 	float RandomNumberPOP();
 
 	UPROPERTY(EditAnywhere)
-	float randNum;
+	int randNum;
 };
-int = 2
+

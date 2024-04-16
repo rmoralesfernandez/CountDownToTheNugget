@@ -10,7 +10,7 @@ UGameManagerInstance::UGameManagerInstance()
 
 float UGameManagerInstance::RandomNumberPOP()
 {
-	randNum = FMath::FRand();
+	randNum = FMath::RandRange(0,1); 
 
 	return randNum;
 }
