@@ -9,6 +9,7 @@
 #include "GameFramework/Controller.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Kismet/GameplayStatics.h"
 #include "InputActionValue.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -69,6 +70,71 @@ void ACountDownToTheNuggetCharacter::BeginPlay()
 	}
 }
 
+void ACountDownToTheNuggetCharacter::Touched()
+{
+	UWorld* World = GetWorld();
+
+	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
+	APawn* ControlledPawn = PlayerController->GetPawn();
+	FVector PlayerLocation = ControlledPawn->GetActorLocation();
+
+	float SphereRadius = 200.0f;
+
+	TArray<AActor*> OverlappingActors;
+
+	//FCollisionObjectQueryParams ObjectQueryParams;
+	//ObjectQueryParams.AddObjectTypesToQuery(ECollisionChannel::ECC_Pawn);
+
+	DrawDebugSphere(World, PlayerLocation, SphereRadius, 12, FColor::Red, false, 5.0f, 0, 1.0f);
+
+	UKismetSystemLibrary::SphereOverlapActors(
+		World,
+		PlayerLocation,
+		SphereRadius,
+		TArray<TEnumAsByte<EObjectTypeQuery>>(),
+		nullptr,
+		TArray<AActor*>(),
+		OverlappingActors
+	);
+
+	for (AActor* Actor : OverlappingActors)
+	{
+		if (!isCountDown)
+		{
+			AActor* ActorOwner = this;
+			
+			if (ActorOwner->ActorHasTag("Player2") && Actor->ActorHasTag("Player1") && !Player1Tie)
+			{
+				isCountDown = true;
+				Player1Tie = true;
+				Player2Tie = false;
+
+				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga el Jugador1"));
+
+				FTimerHandle CountDownHandle;
+				GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
+			}
+
+			if (ActorOwner->ActorHasTag("Player1") && Actor->ActorHasTag("Player2") && !Player2Tie)
+			{
+				isCountDown = true;
+				Player2Tie = true;
+				Player1Tie = false;
+
+				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga el Jugador2"));
+
+				FTimerHandle CountDownHandle;
+				GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
+			}
+		}
+	}
+}
+
+void ACountDownToTheNuggetCharacter::CountDownDone()
+{
+	isCountDown = false;
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
@@ -83,6 +149,9 @@ void ACountDownToTheNuggetCharacter::SetupPlayerInputComponent(UInputComponent* 
 
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ACountDownToTheNuggetCharacter::Move);
+
+		// Touch
+		EnhancedInputComponent->BindAction(TouchAction, ETriggerEvent::Triggered, this, &ACountDownToTheNuggetCharacter::Touched);
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ACountDownToTheNuggetCharacter::Look);

@@ -40,6 +40,9 @@ class ACountDownToTheNuggetCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* TouchAction;
+
 	/** Look Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
@@ -69,5 +72,19 @@ public:
 	//FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	///** Returns FollowCamera subobject **/
 	//FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	void Touched();
+
+	UPROPERTY(BlueprintReadWrite, category = "CharacterGotBomb")
+		bool Player1Tie;
+
+	UPROPERTY(BlueprintReadWrite, category = "CharacterGotBomb")
+		bool Player2Tie;
+
+	UPROPERTY(EditAnyWhere, category = "CountDown")
+		bool isCountDown = false;
+
+	UFUNCTION()
+	void CountDownDone();
 };
 
