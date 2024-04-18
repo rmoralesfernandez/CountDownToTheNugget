@@ -102,7 +102,6 @@ void ACountDownToTheNuggetCharacter::Touched()
 		if (!isCountDown)
 		{
 			AActor* ActorOwner = this;
-			
 			if (ActorOwner->ActorHasTag("Player2") && Actor->ActorHasTag("Player1") && !Player1Tie)
 			{
 				isCountDown = true;
