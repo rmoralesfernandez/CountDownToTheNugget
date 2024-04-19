@@ -111,7 +111,7 @@ void ACountDownToTheNuggetCharacter::Touched()
 				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga el Jugador1"));
 
 				FTimerHandle CountDownHandle;
-				GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
+				GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 20.0f, false);
 			}
 
 			if (ActorOwner->ActorHasTag("Player1") && Actor->ActorHasTag("Player2") && !Player2Tie)
@@ -123,7 +123,7 @@ void ACountDownToTheNuggetCharacter::Touched()
 				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga el Jugador2"));
 
 				FTimerHandle CountDownHandle;
-				GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
+				GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 20.0f, false);
 			}
 		}
 	}
