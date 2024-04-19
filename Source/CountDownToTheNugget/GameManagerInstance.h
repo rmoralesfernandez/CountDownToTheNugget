@@ -24,6 +24,6 @@ public:
 	int randNum;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Manager")
-	float CountDownTimerGM = 5.0f;
+	float CountDownTimerGM = 45.0f;
 };
 
