@@ -74,9 +74,9 @@ void ACountDownToTheNuggetCharacter::Touched()
 {
 	UWorld* World = GetWorld();
 
-	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
-	APawn* ControlledPawn = PlayerController->GetPawn();
-	FVector PlayerLocation = ControlledPawn->GetActorLocation();
+	/*APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
+	APawn* ControlledPawn = PlayerController->GetPawn();*/
+	FVector PlayerLocation = GetActorLocation();
 
 	float SphereRadius = 200.0f;
 

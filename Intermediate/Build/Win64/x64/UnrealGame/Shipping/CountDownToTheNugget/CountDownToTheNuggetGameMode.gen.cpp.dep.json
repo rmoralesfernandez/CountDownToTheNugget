@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\intermediate\\build\\win64\\unrealgame\\inc\\countdowntothenugget\\uht\\countdowntothenuggetgamemode.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\intermediate\\build\\win64\\x64\\countdowntothenugget\\shipping\\engine\\sharedpch.engine.project.novalfmtstr.valapi.cpp20.inclorderunreal5_3.h.pch",
+        "Includes": [
+            "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\intermediate\\build\\win64\\x64\\unrealgame\\shipping\\countdowntothenugget\\definitions.countdowntothenugget.h",
+            "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\source\\countdowntothenugget\\countdowntothenuggetgamemode.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\intermediate\\build\\win64\\unrealgame\\inc\\countdowntothenugget\\uht\\countdowntothenuggetgamemode.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

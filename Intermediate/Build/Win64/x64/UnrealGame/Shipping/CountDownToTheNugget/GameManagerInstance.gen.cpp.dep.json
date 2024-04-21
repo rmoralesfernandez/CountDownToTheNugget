@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\intermediate\\build\\win64\\unrealgame\\inc\\countdowntothenugget\\uht\\gamemanagerinstance.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\intermediate\\build\\win64\\x64\\countdowntothenugget\\shipping\\engine\\sharedpch.engine.project.novalfmtstr.valapi.cpp20.inclorderunreal5_3.h.pch",
+        "Includes": [
+            "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\intermediate\\build\\win64\\x64\\unrealgame\\shipping\\countdowntothenugget\\definitions.countdowntothenugget.h",
+            "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\source\\countdowntothenugget\\gamemanagerinstance.h",
+            "c:\\users\\ricar\\desktop\\thecore\\unreal\\proyectos\\countdowntothenugget\\intermediate\\build\\win64\\unrealgame\\inc\\countdowntothenugget\\uht\\gamemanagerinstance.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
