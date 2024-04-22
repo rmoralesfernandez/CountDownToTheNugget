@@ -85,7 +85,7 @@ void ACountDownToTheNuggetCharacter::Touched()
 	//FCollisionObjectQueryParams ObjectQueryParams;
 	//ObjectQueryParams.AddObjectTypesToQuery(ECollisionChannel::ECC_Pawn);
 
-	DrawDebugSphere(World, PlayerLocation, SphereRadius, 12, FColor::Red, false, 5.0f, 0, 1.0f);
+	
 
 	UKismetSystemLibrary::SphereOverlapActors(
 		World,
@@ -101,30 +101,38 @@ void ACountDownToTheNuggetCharacter::Touched()
 	{
 		if (!isCountDown)
 		{
+			DrawDebugSphere(World, PlayerLocation, SphereRadius, 12, FColor::Red, false, 5.0f, 0, 1.0f);
+
 			AActor* ActorOwner = this;
-			if (ActorOwner->ActorHasTag("Player2") && Actor->ActorHasTag("Player1") && !Player1Tie)
+
+			UGameInstance* gameManagerIIInstance = GetGameInstance();
+
+			UGameManagerInstance* gameManagerInstance = Cast<UGameManagerInstance>(gameManagerIIInstance);
+			
+			if (ActorOwner->ActorHasTag("Player2") && Actor->ActorHasTag("Player1") && !gameManagerInstance->Player1Tie)
 			{
-				isCountDown = true;
-				Player1Tie = true;
-				Player2Tie = false;
+				//isCountDown = true;
+				gameManagerInstance->Player1Tie = true;
+				gameManagerInstance->Player2Tie = false;
 
 				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga el Jugador1"));
 
 				FTimerHandle CountDownHandle;
-				GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
+				//GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
 			}
 
-			if (ActorOwner->ActorHasTag("Player1") && Actor->ActorHasTag("Player2") && !Player2Tie)
+			if (ActorOwner->ActorHasTag("Player1") && Actor->ActorHasTag("Player2") && !gameManagerInstance->Player2Tie)
 			{
-				isCountDown = true;
-				Player2Tie = true;
-				Player1Tie = false;
+				gameManagerInstance->Player2Tie = true;
+				gameManagerInstance->Player1Tie = false;
 
 				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga el Jugador2"));
-
-				FTimerHandle CountDownHandle;
-				GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
 			}
+
+			isCountDown = true;
+
+			FTimerHandle CountDownHandle;
+			GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
 		}
 	}
 }

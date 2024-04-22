@@ -6,6 +6,8 @@
 #include "Engine/GameInstance.h"
 #include "GameManagerInstance.generated.h"
 
+
+
 /**
  * 
  */
@@ -25,5 +27,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Manager")
 	float CountDownTimerGM = 45.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "CharacterGotBomb")
+	bool Player1Tie;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "CharacterGotBomb")
+	bool Player2Tie;
+
 };
 

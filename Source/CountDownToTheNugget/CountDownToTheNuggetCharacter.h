@@ -3,9 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameManagerInstance.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
 #include "CountDownToTheNuggetCharacter.generated.h"
+
 
 class USpringArmComponent;
 class UCameraComponent;
@@ -75,11 +77,7 @@ public:
 
 	void Touched();
 
-	UPROPERTY(BlueprintReadWrite, category = "CharacterGotBomb")
-		bool Player1Tie;
-
-	UPROPERTY(BlueprintReadWrite, category = "CharacterGotBomb")
-		bool Player2Tie;
+	
 
 	UPROPERTY(EditAnyWhere, category = "CountDown")
 		bool isCountDown = false;

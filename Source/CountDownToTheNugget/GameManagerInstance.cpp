@@ -14,3 +14,4 @@ float UGameManagerInstance::RandomNumberPOP()
 
 	return randNum;
 }
+
