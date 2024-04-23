@@ -78,7 +78,7 @@ void ACountDownToTheNuggetCharacter::Touched()
 	APawn* ControlledPawn = PlayerController->GetPawn();*/
 	FVector PlayerLocation = GetActorLocation();
 
-	float SphereRadius = 200.0f;
+	float SphereRadius = 300.0f;
 
 	TArray<AActor*> OverlappingActors;
 
@@ -108,8 +108,13 @@ void ACountDownToTheNuggetCharacter::Touched()
 			UGameInstance* gameManagerIIInstance = GetGameInstance();
 
 			UGameManagerInstance* gameManagerInstance = Cast<UGameManagerInstance>(gameManagerIIInstance);
+
+			if (Actor)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Holaaaaaaaaaa"));
+			}
 			
-			if (ActorOwner->ActorHasTag("Player2") && !gameManagerInstance->Player1Tie)
+			if (ActorOwner->ActorHasTag("Player2") && Actor->ActorHasTag("Player1") && !gameManagerInstance->Player1Tie)
 			{
 				//isCountDown = true;
 				gameManagerInstance->Player1Tie = true;
@@ -121,20 +126,20 @@ void ACountDownToTheNuggetCharacter::Touched()
 				//GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
 			}
 
-			if (ActorOwner->ActorHasTag("Player1") && !gameManagerInstance->Player2Tie)
+			if (ActorOwner->ActorHasTag("Player1") && Actor->ActorHasTag("Player2") && !gameManagerInstance->Player2Tie)
 			{
 				gameManagerInstance->Player2Tie = true;
 				gameManagerInstance->Player1Tie = false;
 
 				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga el Jugador2"));
 			}
-
-			isCountDown = true;
-
-			FTimerHandle CountDownHandle;
-			GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
 		}
 	}
+
+	isCountDown = true;
+
+	FTimerHandle CountDownHandle;
+	GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
 }
 
 void ACountDownToTheNuggetCharacter::CountDownDone()
