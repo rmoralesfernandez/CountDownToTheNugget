@@ -109,7 +109,7 @@ void ACountDownToTheNuggetCharacter::Touched()
 
 			UGameManagerInstance* gameManagerInstance = Cast<UGameManagerInstance>(gameManagerIIInstance);
 			
-			if (ActorOwner->ActorHasTag("Player2") && Actor->ActorHasTag("Player1") && !gameManagerInstance->Player1Tie)
+			if (ActorOwner->ActorHasTag("Player2") && !gameManagerInstance->Player1Tie)
 			{
 				//isCountDown = true;
 				gameManagerInstance->Player1Tie = true;
@@ -121,7 +121,7 @@ void ACountDownToTheNuggetCharacter::Touched()
 				//GetWorldTimerManager().SetTimer(CountDownHandle, this, &ACountDownToTheNuggetCharacter::CountDownDone, 3.0f, false);
 			}
 
-			if (ActorOwner->ActorHasTag("Player1") && Actor->ActorHasTag("Player2") && !gameManagerInstance->Player2Tie)
+			if (ActorOwner->ActorHasTag("Player1") && !gameManagerInstance->Player2Tie)
 			{
 				gameManagerInstance->Player2Tie = true;
 				gameManagerInstance->Player1Tie = false;
