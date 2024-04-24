@@ -108,11 +108,6 @@ void ACountDownToTheNuggetCharacter::Touched()
 			UGameInstance* gameManagerIIInstance = GetGameInstance();
 
 			UGameManagerInstance* gameManagerInstance = Cast<UGameManagerInstance>(gameManagerIIInstance);
-
-			if (Actor)
-			{
-				UE_LOG(LogTemp, Warning, TEXT("Holaaaaaaaaaa"));
-			}
 			
 			if (ActorOwner->ActorHasTag("Player2") && Actor->ActorHasTag("Player1") && !gameManagerInstance->Player1Tie)
 			{
@@ -132,6 +127,14 @@ void ACountDownToTheNuggetCharacter::Touched()
 				gameManagerInstance->Player1Tie = false;
 
 				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga el Jugador2"));
+			}
+
+			if (ActorOwner->ActorHasTag("Player1") && Actor->ActorHasTag("IA_Player") && !gameManagerInstance->Player2Tie)
+			{
+				gameManagerInstance->Player2Tie = true;
+				gameManagerInstance->Player1Tie = false;
+
+				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga la IA"));
 			}
 		}
 	}
