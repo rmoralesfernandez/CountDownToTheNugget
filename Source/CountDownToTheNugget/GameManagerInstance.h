@@ -34,5 +34,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "CharacterGotBomb")
 	bool Player2Tie;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "CharacterGotBomb")
+	bool CoolDownIATie = false;
+
 };
 

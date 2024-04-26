@@ -101,6 +101,8 @@ void ACountDownToTheNuggetCharacter::Touched()
 	{
 		if (!isCountDown)
 		{
+			
+
 			DrawDebugSphere(World, PlayerLocation, SphereRadius, 12, FColor::Red, false, 5.0f, 0, 1.0f);
 
 			AActor* ActorOwner = this;
@@ -133,6 +135,7 @@ void ACountDownToTheNuggetCharacter::Touched()
 			{
 				gameManagerInstance->Player2Tie = true;
 				gameManagerInstance->Player1Tie = false;
+				gameManagerInstance->CoolDownIATie = true;
 
 				UE_LOG(LogTemp, Warning, TEXT("Ahora La Liga la IA"));
 			}
